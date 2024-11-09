@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3F2FD"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:background="@drawable/backgound_gradient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="208dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="70dp"
+                android:text="Đăng ký"
+                android:textColor="#1E0F74"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="40dp"
+                android:text="Hãy nhập đầy đủ chính xác thông tin của bạn !"
+                android:textColor="#C7D4E4"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/radius"
+                android:backgroundTint="#C9D6E6"
+                android:drawableStart="@drawable/icons8_phone_number_24"
+                android:drawablePadding="16dp"
+                android:drawableTint="#1E0F73"
+                android:ems="10"
+                android:fontFamily="@font/quicksand_light"
+                android:hint="Số điện thoại"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColorHint="#1E0F73"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/editTextMail"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/radius"
+                android:backgroundTint="#C9D6E6"
+                android:drawableStart="@drawable/icons8_email_24"
+                android:drawablePadding="16dp"
+                android:drawableTint="#1E0F73"
+                android:ems="10"
+                android:fontFamily="@font/quicksand_light"
+                android:hint="Email"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColorHint="#1E0F73"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/editTextUser"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/radius"
+                android:backgroundTint="#C9D6E6"
+                android:drawableStart="@drawable/icons8_user_24"
+                android:drawablePadding="16dp"
+                android:drawableTint="#1E0F73"
+                android:ems="10"
+                android:fontFamily="@font/quicksand_light"
+                android:hint="Tên đăng nhập"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColorHint="#1E0F73"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/radius"
+                android:backgroundTint="#C7D4E4"
+                android:drawableStart="@drawable/icons8_password_key_24"
+                android:drawablePadding="16dp"
+                android:drawableTint="#1E0F73"
+                android:ems="10"
+                android:fontFamily="@font/quicksand_light"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColorHint="#1E0F73"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/editTextXNPassword"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/radius"
+                android:backgroundTint="#C7D4E4"
+                android:drawableStart="@drawable/icons8_password_key_24"
+                android:drawablePadding="16dp"
+                android:drawableTint="#1E0F73"
+                android:ems="10"
+                android:fontFamily="@font/quicksand_light"
+                android:hint="Xác nhận lại mật khẩu"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColorHint="#1E0F73"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="281dp"
+                android:layout_height="68dp"
+                android:layout_margin="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="50"
+                android:background="@drawable/radius"
+                android:backgroundTint="#0F3473"
+                android:fontFamily="@font/quicksand_light"
+                android:layerType="none"
+                android:text="Đăng ký"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="226dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal"
+                android:text="Bạn đã có tài khoản ? Đăng nhập"
+                android:textColor="#C5D2E2"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
