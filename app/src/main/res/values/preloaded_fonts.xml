@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/aclonica</item>
+        <item>@font/alkalami</item>
+        <item>@font/bodoni_moda</item>
+        <item>@font/chelsea_market</item>
+        <item>@font/josefin_sans</item>
+        <item>@font/josefin_sans_extralight</item>
+        <item>@font/kaisei_harunoumi_medium</item>
+        <item>@font/kaisei_tokumin</item>
         <item>@font/poppins_thin</item>
+        <item>@font/quicksand_bold</item>
         <item>@font/quicksand_light</item>
+        <item>@font/roboto_bold</item>
     </array>
 </resources>
