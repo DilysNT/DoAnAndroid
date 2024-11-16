@@ -12,6 +12,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/backgound_gradient"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -38,11 +39,11 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginBottom="40dp"
                 android:text="Hãy điền thông tin chính xác của bạn !"
-                android:textColor="#C7D4E4"
+                android:textColor="#3A46A2"
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextUser"
+                android:id="@+id/editUserDN"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginStart="32dp"
@@ -63,7 +64,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editUserDNMK"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginStart="32dp"
@@ -82,19 +83,19 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="273dp"
+                android:id="@+id/btnlogin"
+                android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_margin="70dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="287"
                 android:background="@drawable/radius"
-                android:backgroundTint="#0F3473"
-                android:fontFamily="@font/quicksand_light"
+                android:fontFamily="@font/roboto_bold"
                 android:layerType="none"
                 android:text="Đăng nhập"
                 android:textAlignment="center"
+                android:textAllCaps="false"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -107,7 +108,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="Bạn chưa có tài khoản ? Đăng ký"
-                android:textColor="#C7D4E4"
+                android:textColor="#3A46A2"
                 android:textSize="12sp" />
 
         </LinearLayout>
