@@ -96,7 +96,7 @@
                 android:drawableTint="#1E0F73"
                 android:ems="10"
                 android:fontFamily="@font/quicksand_light"
-                android:hint="Tên đăng nhập"
+                android:hint="tên người dùng"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColorHint="#1E0F73"
@@ -143,7 +143,7 @@
                 android:textStyle="normal" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnDKup"
                 android:layout_width="281dp"
                 android:layout_height="68dp"
                 android:layout_margin="70dp"
