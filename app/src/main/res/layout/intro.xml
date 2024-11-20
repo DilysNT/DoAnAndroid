@@ -84,7 +84,11 @@
         app:layout_constraintVertical_bias="0.663" />
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/btnDK"
+=======
+        android:id="@+id/button2"
+>>>>>>> 567af34eb99a1702286e6b7d067c77a62f549719
         android:layout_width="250dp"
         android:layout_height="68dp"
         android:layout_margin="70dp"
@@ -106,7 +110,11 @@
         app:layout_constraintVertical_bias="0.881" />
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/btnDangnhap"
+=======
+        android:id="@+id/button3"
+>>>>>>> 567af34eb99a1702286e6b7d067c77a62f549719
         android:layout_width="250dp"
         android:layout_height="68dp"
         android:layout_margin="70dp"
