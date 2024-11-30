@@ -2,7 +2,6 @@ package com.example.login;
 
 public class User {
     private Integer userId;
-
     private String userName;
     private String password;
     private String email;
@@ -12,20 +11,12 @@ public class User {
     public User() {
     }
 
-    public User(Integer userId, String userName, String password, String email, String phone, Boolean isAdmin) {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.isAdmin = isAdmin;
-    }
-
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
+    // Getter và Setter
     public Integer getUserId() {
         return userId;
     }
@@ -66,11 +57,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Boolean getAdmin() {
+    public Boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

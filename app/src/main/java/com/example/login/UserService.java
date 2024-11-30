@@ -16,6 +16,7 @@ public interface UserService {
     Call<User> Login(@Body User user);
     @POST("login")
     Call<User> login(@Body User user);
-
+    @POST("/api/users/signup")
+    Call<Void> signupUser(@Body User user);
 
 }
