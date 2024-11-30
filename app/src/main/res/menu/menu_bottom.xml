@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemhome"
+        android:title="home"
+        android:icon="@drawable/house"
+
+        />
+    <item
+        android:id="@+id/itemticket"
+        android:title="cocainit"
+        android:icon="@drawable/ticket"/>
+    <item
+        android:id="@+id/itemthongbao"
+        android:title="thongbao"
+        android:icon="@drawable/bell"/>
+    <item
+        android:id="@+id/itemdangxuat"
+        android:title="dang xuat"
+        android:icon="@drawable/user"/>
+</menu>

@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:paddingBottom="16dp"
+    android:background="@color/white"
+    android:layout_margin="8dp">
+
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image_tour"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bell" />
+
+            <TextView
+                android:id="@+id/txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:text="Giá"
+                android:textColor="#FF0000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+
+        android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/txtlocation"
+                android:layout_width="267dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/location"
+                android:drawablePadding="8dp"
+                android:text="Địa điểm"
+                android:textColor="#333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtDay"
+                android:layout_width="267dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/clock"
+                android:paddingBottom="8dp"
+                android:text="Thời gian"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txtstart_date"
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/calendar"
+                android:paddingBottom="8dp"
+                android:text="Ngày bắt đầu"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txt_transport"
+                android:layout_width="261dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/car"
+
+                android:paddingBottom="8dp"
+                android:text="Phương tiện"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>

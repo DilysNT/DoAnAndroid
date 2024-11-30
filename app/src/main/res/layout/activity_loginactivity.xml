@@ -83,11 +83,7 @@
                 android:textStyle="bold" />
 
             <Button
-<<<<<<< HEAD:app/src/main/res/layout/activity_loginactivity.xml
                 android:id="@+id/btnlogin"
-=======
-                android:id="@+id/button"
->>>>>>> 567af34eb99a1702286e6b7d067c77a62f549719:app/src/main/res/layout/activity_login.xml
                 android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_margin="70dp"

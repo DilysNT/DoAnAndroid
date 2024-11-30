@@ -6,7 +6,7 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private Boolean isAdmin;
+    private int isAdmin;
 
     public User() {
     }
@@ -57,11 +57,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Boolean getIsAdmin() {
+    public int getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(Boolean isAdmin) {
+    public void setIsAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
 }

@@ -39,7 +39,7 @@ public class Signupactivity extends AppCompatActivity {
         edituser = findViewById(R.id.editTextUser);
         editpassword = findViewById(R.id.editTextPassword);
         editrepassword = findViewById(R.id.editTextXNPassword);
-        btnsignup = findViewById(R.id.btnDKup);
+        btnsignup = findViewById(R.id.btnDKe);
 
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
