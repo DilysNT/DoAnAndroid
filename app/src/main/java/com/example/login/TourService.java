@@ -11,6 +11,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface TourService {
     @GET("/api/tours")
@@ -22,4 +23,7 @@ public interface TourService {
 
     @DELETE("/api/tours/{id}")
     Call<Void> deleteTour(@Path("id") Long id);
+
+    @GET("/api/tours/search")
+    Call<List<Tour>> searchTours(@Query("tourName") String tourName);
 }

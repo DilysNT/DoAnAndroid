@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="destination_list1">
+            <item>Hà Nội</item>
+            <item>Đà Nẵng</item>
+            <item>Nha Trang</item>
+        </string-array>
+</resources>
