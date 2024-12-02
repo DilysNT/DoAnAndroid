@@ -27,6 +27,8 @@ import com.example.login.TourImage;
 import com.example.login.TourService;
 import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +49,7 @@ import retrofit2.Response;
         private ListView listView;
         private TourAdapter tourAdapter;
         private int pos =-1;
+        private Long Tourupdate ;
        private List<Tour> tours;
         private Button btnadd;
 
@@ -65,18 +68,68 @@ import retrofit2.Response;
             super.onCreate(savedInstanceState);
             getParentFragmentManager().setFragmentResultListener("requestKey", this, (requestKey, result) -> {
                 Tour newTour = (Tour) result.getSerializable("tour");
+
                 if (newTour != null) {
+                    if (pos == -1){
                     tourAdapter.add(newTour);
-                    uploadtour(newTour);
+                    uploadtour(newTour);}
+                    else {
+
+                        tourAdapter.remove(tourAdapter.getItem(pos));
+                        tourAdapter.insert(newTour,pos);
+                        updatetour(newTour);
+
+                        pos = -1;
+                    }
                 }
             });
         }
+
+    private void updatetour(Tour newTour) {
+        Gson gson = new Gson();
+        String tourJson = gson.toJson(newTour);
+        RequestBody tourRequestBody = RequestBody.create(MediaType.parse("application/json"), tourJson);
+
+
+        List<MultipartBody.Part> imageParts = new ArrayList<>();
+        for (TourImage tourImage : newTour.getImages()) {
+
+            byte[] imageBytes = Base64.decode(tourImage.getImageData(), Base64.DEFAULT);
+
+
+            RequestBody imageRequestBody = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
+
+            MultipartBody.Part imagePart = MultipartBody.Part.createFormData("images", "image.jpg", imageRequestBody);
+            imageParts.add(imagePart);
+        }
+
+
+        TourService tourService = RetrofitClinet.getRetrofitInstance().create(TourService.class);
+        Call<Tour> call = tourService.updateTour(newTour.getTourId(),tourRequestBody,imageParts);
+        call.enqueue(new Callback<Tour>() {
+            @Override
+            public void onResponse(Call<Tour> call, Response<Tour> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Cập nhật tour thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    // In thêm thông tin lỗi để phân tích
+                    Log.e("UpdateTourError", "Code: " + response.code() + " Message: " + response.message());
+                    Toast.makeText(getContext(), "Cập nhật tour không thành công: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Tour> call, Throwable t) {
+                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
     private void uploadtour(Tour tour) {
 
         Gson gson = new Gson();
         String tourJson = gson.toJson(tour);
-
-
         RequestBody tourRequestBody = RequestBody.create(MediaType.parse("application/json"), tourJson);
 
 
@@ -92,7 +145,10 @@ import retrofit2.Response;
             imageParts.add(imagePart);
         }
 
-
+        Log.d("TourJson", tourJson);
+        for (MultipartBody.Part part : imageParts) {
+            Log.d("ImagePart", part.toString());
+        }
         TourService tourService = RetrofitClinet.getRetrofitInstance().create(TourService.class);
         Call<Tour> call = tourService.createTour(tourRequestBody, imageParts);
 
@@ -103,7 +159,13 @@ import retrofit2.Response;
                 if (response.isSuccessful()) {
                     Toast.makeText(getContext(), "tao tour thanh cong", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "tao tour ko thanh cong: " + response.message(), Toast.LENGTH_SHORT).show();
+                    try {
+                        String errorBody = response.errorBody().string();
+                        Log.e("Error Response", errorBody); // Ghi log chi tiết lỗi
+                        Toast.makeText(getContext(), "Tạo tour không thành công: " + errorBody, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
@@ -120,13 +182,7 @@ import retrofit2.Response;
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_house, container, false);
             listView = view.findViewById(R.id.listView);
-            /*launcher =registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result ->{
-                if (result.getResultCode() == RESULT_OK){
-                    Intent data = result.getData();
-                    Tour tour = (Tour) data.getSerializableExtra("tour");
-                    tourAdapter.add(tour);
-                }
-            } );*/
+
             btnadd= view.findViewById(R.id.btnthem);
             btnadd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -142,23 +198,21 @@ import retrofit2.Response;
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                // Lấy ID của tour mà bạn muốn xóa
+                pos = position;
                 Tour selectedTour = (Tour) parent.getItemAtPosition(position);
                 Long tourId = selectedTour.getTourId();
-
-                // Tạo dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setTitle("Chọn hành động");
                 builder.setItems(new CharSequence[]{"Sửa", "Xóa"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
-                            case 0: // Sửa
-                                // Xử lý logic sửa
+                            case 0:
+
                                 editTour(selectedTour);
                                 break;
 
-                            case 1: // Xóa
+                            case 1:
                                 deleteTour(tourId, position);
                                 break;
                         }
@@ -200,7 +254,14 @@ import retrofit2.Response;
     }
 
     private void editTour(Tour selectedTour) {
-        
+        AddandchangetourFragment fragment = new AddandchangetourFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("tourupdate", selectedTour);
+        fragment.setArguments(bundle);
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.house,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 

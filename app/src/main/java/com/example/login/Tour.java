@@ -15,16 +15,7 @@ public class Tour implements Serializable {
     private Date endDate;
     private String description;
     private List<TourImage> images;
-
-    public Tour(String tourName, String destination, BigDecimal price, Date startDate, Date endDate, String description, List<TourImage> images) {
-        this.tourName = tourName;
-        this.destination = destination;
-        this.price = price;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.description = description;
-        this.images = images;
-    }
+    private List<Ticket> tickets;
 
     public Tour(Long tourId, String tourName, String destination, BigDecimal price, Date startDate, Date endDate, String description, List<TourImage> images) {
         this.tourId = tourId;
@@ -36,7 +27,20 @@ public class Tour implements Serializable {
         this.description = description;
         this.images = images;
     }
+
+    // Constructor không có ID
+    public Tour(String tourName, String destination, BigDecimal price, Date startDate, Date endDate, String description, List<TourImage> images) {
+        this(null, tourName, destination, price, startDate, endDate, description, images);
+    }
     public Tour() {}
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 
     public long getTourId() {
         return this.tourId;

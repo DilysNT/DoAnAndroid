@@ -1,0 +1,86 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:padding="8dp"
+    >
+
+    <!-- Phần trái -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txttournameticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOUR ĐÀ LẠT"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/bell" />
+
+            <TextView
+                android:id="@+id/txtlocationticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Hồ Chí Minh"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtdaystarticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01-11-2024"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Phần phải -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt_tourl_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 ngày 3 đêm"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 người lớn, 1 trẻ em"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/txtpriceticekt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.000.000"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

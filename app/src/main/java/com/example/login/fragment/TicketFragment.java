@@ -1,14 +1,31 @@
 package com.example.login.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.login.R;
+import com.example.login.RetrofitClinet;
+import com.example.login.Tour;
+import com.example.login.TourAdapter;
+import com.example.login.TourService;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +33,57 @@ import com.example.login.R;
  * create an instance of this fragment.
  */
 public class TicketFragment extends Fragment {
+    private ListView listView;
+    private TourAdapter tourAdapter;
+    private int pos =-1;
+
+    private List<Tour> tours;
+
+    @SuppressLint("MissingInflatedId")
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
+        listView = view.findViewById(R.id.listViewtickettour);
+        loadTours();
+       listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+           @Override
+           public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+               Tour selectedTour = (Tour) parent.getItemAtPosition(position);
+               Long tourId = selectedTour.getTourId();
+
+               InSideticketFragment newframent = new InSideticketFragment();
+               Bundle bundle = new Bundle();
+               bundle.putSerializable("tickettour",selectedTour);
+
+               return true;
+           }
+       });
+
+        return view;
+    }
+
+    private void loadTours() {
+        TourService tourApi = RetrofitClinet.getRetrofitInstance().create(TourService.class);
+        Call<List<Tour>> call = tourApi.getAllTours();
+        call.enqueue(new Callback<List<Tour>>() {
+            @Override
+            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
+                if (response.isSuccessful()) {
+                    tours = response.body(); // Lưu trữ danh sách tours
+                    tourAdapter = new TourAdapter(getContext(), tours);
+                    listView.setAdapter(tourAdapter);
+                } else {
+                    Log.e("API Error", "co loi: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tour>> call, Throwable t) {
+                Log.e("APi bi loi", t.getMessage());
+            }
+        });
+    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,19 +116,5 @@ public class TicketFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ticket, container, false);
-    }
 }

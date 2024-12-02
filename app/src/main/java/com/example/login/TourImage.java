@@ -1,9 +1,11 @@
 package com.example.login;
 import android.util.Base64;
 
-public class TourImage {
+import java.io.Serializable;
 
-    private Long imageId;
+public class TourImage implements Serializable {
+
+    private Long image_id;
     private Tour tour; // Tham chiếu đến đối tượng Tour
     private String imageData;
 
@@ -11,12 +13,12 @@ public class TourImage {
         this.imageData = imageData;
     }
 
-    public Long getImageId() {
-        return imageId;
+    public Long getImage_id() {
+        return image_id;
     }
 
-    public void setImageId(Long imageId) {
-        this.imageId = imageId;
+    public void setImage_id(Long image_id) {
+        this.image_id = image_id;
     }
 
     public Tour getTour() {

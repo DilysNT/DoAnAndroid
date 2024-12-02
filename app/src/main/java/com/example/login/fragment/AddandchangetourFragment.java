@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,13 @@ import com.example.login.TourImage;
 
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,6 +76,20 @@ public class AddandchangetourFragment extends Fragment {
                 getParentFragmentManager().popBackStack();
             }
         });
+        Bundle bundle = getArguments();
+        if (bundle !=null){
+            Tour tour = (Tour) bundle.getSerializable("tourupdate");
+            if (tour != null){
+                editTourName.setText(tour.getTourName());
+                editDiemDen.setText(tour.getDestination());
+                editPrice.setText(tour.getPrice() + "");
+                editDescription.setText(tour.getDescription());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                editStartDate.setText(dateFormat.format(tour.getStartDate()));
+                editEndDate.setText(dateFormat.format(tour.getEndDate()));
+
+            }
+        }
 
 
         btnchonanh.setOnClickListener(new View.OnClickListener() {
@@ -97,10 +114,8 @@ public class AddandchangetourFragment extends Fragment {
                     Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(editEndDate.getText().toString());
                     String description = editDescription.getText().toString();
 
-
                     List<TourImage> images = new ArrayList<>();
                     for (Uri uri : selectImages) {
-
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
                         ByteArrayOutputStream bos = new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
@@ -110,22 +125,29 @@ public class AddandchangetourFragment extends Fragment {
                         images.add(new TourImage(base64Image));
                     }
 
+                    // Kiểm tra xem bundle có ID không
+                    Long tourId = null;
+                    Bundle bundle = getArguments();
+                    if (bundle != null) {
+                        Tour existingTour = (Tour) bundle.getSerializable("tourupdate");
+                        if (existingTour != null) {
+                            tourId = existingTour.getTourId(); // Lấy ID cũ nếu sửa
+                        }
+                    }
 
-                    Tour tour = new Tour(null, tourName, destination, price, startDate, endDate, description, images);
-
-
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("tour", tour);
-
-                    getParentFragmentManager().setFragmentResult("requestKey", bundle);
-
-
+                    // Sử dụng ID khi sửa
+                    Tour tour = new Tour(tourId, tourName, destination, price, startDate, endDate, description, images);
+                    Bundle resultBundle = new Bundle();
+                    resultBundle.putSerializable("tour", tour);
+                    getParentFragmentManager().setFragmentResult("requestKey", resultBundle);
                     getParentFragmentManager().popBackStack();
                 } catch (Exception e) {
-                    Toast.makeText(getContext(), "Dữ liệu không hợp lệ", Toast.LENGTH_SHORT).show();
+                    Log.e("AddandchangetourFragment", "Lỗi khi lưu tour: " + e.getMessage());
+                    Toast.makeText(getContext(), "Dữ liệu không hợp lệ: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
 
 
