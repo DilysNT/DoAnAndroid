@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="410dp"
+    android:layout_height="200dp"
+    android:background="@drawable/background_edittext"
+    android:orientation="horizontal"
+    android:layout_weight="1">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_hanoi"
+        android:layout_marginLeft="15dp"
+        android:padding="10dp" />
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá: "
+        android:paddingLeft="50dp"
+        android:layout_gravity="bottom"
+        android:textColor="#D32F2F"
+        android:textSize="20dp"
+        android:layout_marginTop="170dp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="180dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtlocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Địa điểm"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời gian"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/txtstart_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày khởi hành"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/txtSL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số lượng"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/txtPT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phương tiện"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginBottom="5dp"/>
+    </LinearLayout>
+</RelativeLayout>
