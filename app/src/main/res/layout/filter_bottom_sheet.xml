@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/background_edittext">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bộ lọc"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:textColor="#000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="20dp">
+
+            <RadioButton
+                android:id="@+id/rdThap"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="0 - 1.000.000"
+                android:paddingLeft="5dp"
+                android:buttonTint="@color/radio_text_selector"
+                android:textColor="#000000" />
+
+            <RadioButton
+                android:id="@+id/rdTb"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:buttonTint="@color/radio_text_selector"
+                android:text="1.000.000 - 2.000.000"
+                android:textColor="#000000" />
+
+            <RadioButton
+                android:id="@+id/rdCao"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:buttonTint="@color/radio_text_selector"
+                android:text="2.000.000 - 3.000.000"
+                android:textColor="#000000" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rdThap2"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:buttonTint="@color/radio_text_selector"
+                android:text="3.000.000 - 4.000.000"
+                android:textColor="#000000" />
+
+            <RadioButton
+                android:id="@+id/rdTb2"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:buttonTint="@color/radio_text_selector"
+                android:text="4.000.000 - 5.000.000"
+                android:textColor="#000000" />
+
+            <RadioButton
+                android:id="@+id/rdCao2"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:buttonTint="@color/radio_text_selector"
+                android:text="5.000.0000 - 9.000.000"
+                android:textColor="#000000" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Điểm đến"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:layout_marginTop="16dp" />
+    <Spinner
+        android:id="@+id/spinnerDestination"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:spinnerMode="dropdown"
+        android:entries="@array/destination_list"
+        android:backgroundTint="#000000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số lượng"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imgMinus"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:contentDescription="Minus"
+            app:srcCompat="@drawable/ic_minus" />
+
+        <EditText
+            android:id="@+id/etQuantity"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:hint="Nhập số lượng"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:fontFamily="@font/quicksand"
+            android:textColorHint="#A29595" />
+
+        <ImageButton
+            android:id="@+id/imgPlus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:contentDescription="Plus"
+            app:srcCompat="@drawable/ic_plus" />
+    </LinearLayout>
+
+    <!-- Button Áp dụng -->
+    <Button
+        android:id="@+id/btnApplyFilters"
+        android:layout_width="150dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Tìm Kiếm"
+        android:textStyle="bold"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/bottom"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

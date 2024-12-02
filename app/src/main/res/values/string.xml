@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="destination_list">
+        <item>Hà Nội</item>
+        <item>Phú Quốc</item>
+        <item>Hội An</item>
+        <item>Hồ Chí Minh</item>
+    </string-array>
+</resources>
