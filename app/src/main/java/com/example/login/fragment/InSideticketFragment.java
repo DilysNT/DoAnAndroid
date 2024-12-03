@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,10 +63,17 @@ public class InSideticketFragment extends Fragment {
         }else {
             Toast.makeText(getContext(), "bundle ko có gì", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
+        btnthemticket = container.findViewById(R.id.btnthemtichket);
+        btnthemticket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ThemhoacSuaTicketFragment fragment = new ThemhoacSuaTicketFragment();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.ticketinside,fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
         return view;
     }
 
@@ -81,7 +89,7 @@ public class InSideticketFragment extends Fragment {
                     if (tickets != null && !tickets.isEmpty()) {
 
                         for (Ticket ticket : tickets) {
-                            ticket.setTour(touracb); // tour đã được lấy từ bundle
+                            ticket.setTour(touracb);
                         }
                     }
                     ticketAdapter = new TicketAdapter(getContext(), tickets);
