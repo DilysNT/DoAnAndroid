@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/ticketinside"
     android:layout_height="match_parent"
     tools:context=".fragment.InSideticketFragment"
     android:background="@color/white">
@@ -15,14 +16,6 @@
         android:elevation="4dp">
 
         <!-- Menu icon bên trái -->
-        <ImageView
-            android:id="@+id/menuIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/user"
-            android:contentDescription="Menu"
-            android:padding="16dp"
-            android:layout_gravity="start" />
 
         <!-- Tiêu đề -->
         <TextView
@@ -34,12 +27,19 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:layout_gravity="center" />
-
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm"
+            android:background="@color/radio_text_selector"/>
 
 
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Danh sách vé (ListView) -->
+
+
     <ListView
         android:id="@+id/listViewTicket"
         android:layout_width="match_parent"

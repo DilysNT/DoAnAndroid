@@ -2,6 +2,8 @@ package com.example.login.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,12 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.login.R;
+import com.example.login.RetrofitClinet;
+import com.example.login.Ticket;
+import com.example.login.TicketAdapter;
+import com.example.login.TicketService;
 import com.example.login.Tour;
 import com.example.login.TourAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,11 +36,68 @@ import java.util.List;
  */
 public class InSideticketFragment extends Fragment {
     private ListView listView;
-    private TourAdapter tourAdapter;
+    private TicketAdapter ticketAdapter;
     private int pos =-1;
-    private Long Tourupdate ;
-    private List<Tour> tours;
+    private List<Ticket> tickets;
+    private Tour touracb;
+    Button btnthemticket ;
+
     private Button btnadd;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_in_sideticket,container,false);
+        listView = view.findViewById(R.id.listViewTicket);
+
+        Bundle bundle = getArguments();
+        if (bundle !=null){
+            Tour tour = (Tour) bundle.getSerializable("tickettour");
+            touracb= (Tour) bundle.getSerializable("tickettour");
+            if (tour != null) {
+                Long tourId = tour.getTourId();
+                loadticket(tourId);
+            }
+            else {Toast.makeText(getContext(), "ko có tour", Toast.LENGTH_SHORT).show();}
+        }else {
+            Toast.makeText(getContext(), "bundle ko có gì", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+        return view;
+    }
+
+    private void loadticket(Long tourId) {
+        TicketService  ticketService = RetrofitClinet.getRetrofitInstance().create(TicketService.class);
+
+        Call<List<Ticket>> call = ticketService.getTicketbyTour(tourId);
+        call.enqueue(new Callback<List<Ticket>>() {
+            @Override
+            public void onResponse(Call<List<Ticket>> call, Response<List<Ticket>> response) {
+                if (response.isSuccessful()){
+                    tickets = response.body();
+                    if (tickets != null && !tickets.isEmpty()) {
+
+                        for (Ticket ticket : tickets) {
+                            ticket.setTour(touracb); // tour đã được lấy từ bundle
+                        }
+                    }
+                    ticketAdapter = new TicketAdapter(getContext(), tickets);
+                    listView.setAdapter(ticketAdapter);
+                    Toast.makeText(getContext(), "loadticket thanh cong", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "loadticket thất bại ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Ticket>> call, Throwable t) {
+
+            }
+        });
+    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,19 +130,5 @@ public class InSideticketFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_in_sideticket, container, false);
-    }
 }

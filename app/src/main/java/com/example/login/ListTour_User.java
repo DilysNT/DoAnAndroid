@@ -33,19 +33,31 @@ public class ListTour_User extends AppCompatActivity {
         tourUserAdapter=new TourUserAdapter(this,new ArrayList<>());
         lv.setAdapter(tourUserAdapter);
 
-        TourService tourService = RetrofitClinet.getRetrofitInstance().create(TourService.class);
-//        Call<List<Tour>> test=RetrofitClinet.getRetrofitInstance().create(TourService.class).getAllTours();
-//        test.enqueue(new Callback<List<Tour>>() {
-//            @Override
-//            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
-//                List<Tour> a=response.body();
-//                tourUserAdapter.addAll(a);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Tour>> call, Throwable t) {
-//
-//            }
-//        });
+        String searchLocation = getIntent().getStringExtra("test");
+        loadtimkiem(searchLocation);
+        
+    }
+
+    private void loadtimkiem(String location) {
+        TourService tourService  =RetrofitClinet.getRetrofitInstance().create(TourService.class);
+        Call<List<Tour>> call = tourService.searchTours(location);
+        call.enqueue(new Callback<List<Tour>>() {
+            @Override
+            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Cập nhật dữ liệu cho Adapter
+                    tourUserAdapter.clear();
+                    tourUserAdapter.addAll(response.body());
+                    tourUserAdapter.notifyDataSetChanged();
+                } else {
+                    // Xử lý trường hợp không có dữ liệu
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tour>> call, Throwable t) {
+                // Xử lý lỗi
+            }
+        });
     }
 }

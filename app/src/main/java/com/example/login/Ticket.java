@@ -1,15 +1,17 @@
 package com.example.login;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Ticket {
+public class Ticket implements Serializable {
     private Long ticketId;
-    private Tour tour; // Bạn cần tạo lớp Tour nếu chưa có
-    private Booking booking; // Bạn cần tạo lớp Booking nếu chưa có
-    private TicketType ticketType; // Bạn cần tạo enum TicketType nếu chưa có
+
+    private Booking booking;
+    private TicketType ticketType;
     private String passengerName;
     private String seatNumber;
     private BigDecimal price;
+    private Tour tour;
 
     public Long getTicketId() {
         return ticketId;

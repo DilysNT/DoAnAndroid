@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,8 +36,6 @@ import retrofit2.Response;
 public class TicketFragment extends Fragment {
     private ListView listView;
     private TourAdapter tourAdapter;
-    private int pos =-1;
-
     private List<Tour> tours;
 
     @SuppressLint("MissingInflatedId")
@@ -45,20 +44,27 @@ public class TicketFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         listView = view.findViewById(R.id.listViewtickettour);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Tour selectedTour = (Tour) parent.getItemAtPosition(position);
+                Long tourId = selectedTour.getTourId();
+
+                InSideticketFragment newFragment = new InSideticketFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("tickettour", selectedTour); // Đảm bảo sử dụng cùng khóa
+                newFragment.setArguments(bundle);
+                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.ticket, newFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+                return true;
+            }
+        });
+
         loadTours();
-       listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-           @Override
-           public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-               Tour selectedTour = (Tour) parent.getItemAtPosition(position);
-               Long tourId = selectedTour.getTourId();
-
-               InSideticketFragment newframent = new InSideticketFragment();
-               Bundle bundle = new Bundle();
-               bundle.putSerializable("tickettour",selectedTour);
-
-               return true;
-           }
-       });
 
         return view;
     }

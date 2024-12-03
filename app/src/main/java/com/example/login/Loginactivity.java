@@ -68,7 +68,7 @@ public class Loginactivity extends AppCompatActivity {
                         startActivity(adminintent);
                     }
                     else{
-                        Intent userintent = new Intent();
+                        Intent userintent = new Intent(Loginactivity.this,HomeUser.class);
                         startActivity(userintent);
                     }
                 } else {

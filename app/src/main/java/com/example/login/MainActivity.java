@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btndangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(MainActivity.this,HomeUser.class);
+                Intent myintent = new Intent(MainActivity.this,Loginactivity.class);
                 startActivity(myintent);
 
             }
