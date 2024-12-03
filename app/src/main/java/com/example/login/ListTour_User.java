@@ -45,18 +45,18 @@ public class ListTour_User extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // Cập nhật dữ liệu cho Adapter
+
                     tourUserAdapter.clear();
                     tourUserAdapter.addAll(response.body());
                     tourUserAdapter.notifyDataSetChanged();
                 } else {
-                    // Xử lý trường hợp không có dữ liệu
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<Tour>> call, Throwable t) {
-                // Xử lý lỗi
+
             }
         });
     }
