@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
@@ -19,7 +20,9 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_minus" />
+            android:background="@drawable/fill"
+            app:srcCompat="@drawable/ic_back"
+            android:contentDescription="@string/image_button_description"/>
 
         <TextView
             android:id="@+id/textView7"
@@ -28,8 +31,10 @@
             android:layout_weight="1"
             android:textColor="#000000"
             android:gravity="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/quicksand_bold"
             android:layout_gravity="center"
-            android:text="TextView" />
+            android:text="Kết quả tìm kiếm" />
 
         <ImageButton
             android:layout_gravity="center"
@@ -37,7 +42,9 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_plus" />
+            android:background="@drawable/fill"
+            app:srcCompat="@drawable/ic_notification"
+            android:contentDescription="@string/image_button_description"/>
     </LinearLayout>
 
     <ListView

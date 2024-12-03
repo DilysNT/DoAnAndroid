@@ -26,7 +26,5 @@
         app:itemIconTint="@color/custom_item_color"
         app:itemBackground="@color/background_item"
 
-
-
         />
 </RelativeLayout>
