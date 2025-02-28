@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <EditText
+        android:id="@+id/edit_tourname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên Tour"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/editdiemden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Điểm Đến"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/editprice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/editstartdata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ngày Bắt Đầu"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:focusable="false"
+        android:clickable="true"/>
+
+    <EditText
+        android:id="@+id/editend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ngày Kết Thúc"
+        android:textColorHint="@color/black"
+        android:focusable="false"
+        android:clickable="true"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô Tả"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+
+    <Button
+        android:id="@+id/btnselectimage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn Ảnh"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/btnluu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/btnthoat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thoát"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Bóng đổ -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#7D7C7C" /> <!-- Màu bóng -->
+            <corners android:radius="25dp" /> <!-- Bo góc cho bóng -->
+        </shape>
+    </item>
+    <!-- Nền button -->
+    <item android:bottom="2dp" android:right="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#000000"
+                android:centerColor="#000000"
+                android:endColor="#000000"
+                android:angle="60"/> <!-- Màu nền button -->
+            <corners android:radius="25dp" /> <!-- Bo góc cho nền button -->
+        </shape>
+    </item>
+</layer-list>

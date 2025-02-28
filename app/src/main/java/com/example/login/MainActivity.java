@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         btnddangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(MainActivity.this,Signupactivity.class);
+                Intent myintent = new Intent(MainActivity.this,Booking.class);
                 startActivity(myintent);
             }
         });

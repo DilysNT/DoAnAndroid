@@ -1,6 +1,7 @@
 package com.example.login;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +61,16 @@ public class Loginactivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    User logginuser = response.body();
                     Toast.makeText(Loginactivity.this, "Xin chào " + response.body().getUserName(), Toast.LENGTH_LONG).show();
+                    if (logginuser.getIsAdmin()==1){
+                        Intent adminintent = new Intent(Loginactivity.this,AdminMainMenu.class);
+                        startActivity(adminintent);
+                    }
+                    else{
+                        Intent userintent = new Intent(Loginactivity.this,HomeUser.class);
+                        startActivity(userintent);
+                    }
                 } else {
                     Toast.makeText(Loginactivity.this, "Đăng nhập không thành công", Toast.LENGTH_LONG).show();
                 }

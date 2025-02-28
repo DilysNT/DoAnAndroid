@@ -12,10 +12,11 @@ public interface UserService {
     @GET("api/users")
     Call<List<User>> getData();
 
-    @POST("api/users")
+    @POST("api/users/login")
     Call<User> Login(@Body User user);
-    @POST("login")
-    Call<User> login(@Body User user);
 
+
+    @POST("/api/users/signup")
+    Call<Void> signupUser(@Body User user);
 
 }
